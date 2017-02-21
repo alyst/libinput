@@ -136,7 +136,7 @@ filter_get_type(struct motion_filter *filter)
 
 /* Touchpad acceleration */
 #define TOUCHPAD_DEFAULT_THRESHOLD 200		/* mm/s */
-#define TOUCHPAD_THRESHOLD_RANGE 50		/* mm/s */ /* FIXME: adjust this */
+#define TOUCHPAD_THRESHOLD_RANGE 50		/* mm/s */
 #define TOUCHPAD_ACCELERATION 3.0		/* unitless factor */
 #define TOUCHPAD_INCLINE 0.011			/* unitless factor */
 
@@ -862,7 +862,7 @@ touchpad_accel_profile_linear(struct motion_filter *filter,
 	/* Scale everything depending on the acceleration set */
 	factor *= 1 + 0.5 * filter->speed_adjustment;
 
-	return factor * TP_MAGIC_SLOWDOWN;
+	return factor * (TP_MAGIC_SLOWDOWN + 0.05 * filter->speed_adjustment);
 }
 
 double
