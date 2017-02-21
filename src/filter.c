@@ -40,7 +40,7 @@
  * technically correct but subjectively wrong, we expect a touchpad to be a
  * lot slower than a mouse. Apply a magic factor to slow down all movements
  */
-#define TP_MAGIC_SLOWDOWN 0.37 /* unitless factor */
+#define TP_MAGIC_SLOWDOWN 0.29 /* unitless factor */
 
 /* Convert speed/velocity from units/us to units/ms */
 static inline double
@@ -135,9 +135,9 @@ filter_get_type(struct motion_filter *filter)
 #define DEFAULT_INCLINE 1.1			/* unitless factor */
 
 /* Touchpad acceleration */
-#define TOUCHPAD_DEFAULT_THRESHOLD 254		/* mm/s */
-#define TOUCHPAD_THRESHOLD_RANGE 184		/* mm/s */
-#define TOUCHPAD_ACCELERATION 9.0		/* unitless factor */
+#define TOUCHPAD_DEFAULT_THRESHOLD 200		/* mm/s */
+#define TOUCHPAD_THRESHOLD_RANGE 50		/* mm/s */ /* FIXME: adjust this */
+#define TOUCHPAD_ACCELERATION 3.0		/* unitless factor */
 #define TOUCHPAD_INCLINE 0.011			/* unitless factor */
 
 /* for the Lenovo x230 custom accel. do not touch */
