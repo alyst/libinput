@@ -2023,9 +2023,15 @@ tablet_init(struct tablet_dispatch *tablet,
 	tablet_set_status(tablet, TABLET_TOOL_OUT_OF_PROXIMITY);
 
 	if (device->model_flags & EVDEV_MODEL_HUION_TABLET_NO_PROXIMITY_OUT) {
+		char timer_name[64];
+		snprintf(timer_name,
+			 sizeof(timer_name),
+			 "%s tablet",
+			 evdev_device_get_sysname(tablet->device));
 		tablet->quirks.need_to_force_prox_out = true;
 		libinput_timer_init(&tablet->quirks.prox_out_timer,
 				    tablet_libinput_context(tablet),
+				    timer_name,
 				    tablet_proximity_out_quirk_timer_func,
 				    tablet);
 	}
